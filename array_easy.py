@@ -201,8 +201,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        front,  rear= 0, (len(nums) - 1)
-        front_sum, rear_sum= nums[front], nums[rear]
+        front,  rear = 0, (len(nums) - 1)
+        front_sum, rear_sum = nums[front], nums[rear]
         while front < rear:
             if front_sum < rear_sum:
                 front += 1
@@ -279,25 +279,57 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
+
         def square_varify(L):
+            if L[1][1] != 5:
+                return False
+            for l in L:
+                for v in l:
+                    if v > 9 or v < 1:
+                        return False
             a = L[0][0] + L[2][2]
             b = L[0][2] + L[2][0]
-            if a == b:
+            c = L[0][1] + L[2][1]
+            d = L[1][0] + L[1][2]
+            if a == b == c == d:
                 return True
             else:
                 return False
 
         import numpy as np
         grid = np.array(grid)
-
         if len(grid) < 3 or len(grid[0]) < 3:
             return 0
-
         count = 0
         for i in range(len(grid) - 2):
             for j in range(len(grid[0]) - 2):
-                m = grid[i:i + 3, j: j+3]
-                if square_varify(m):
+                if square_varify(grid[i:i + 3, j:j + 3]):
                     count += 1
         return count
 
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums.sort(reverse=True)
+        res = []
+        for i, num in enumerate(nums):
+            if i > 0 and nums[i - 1] == num:
+                continue
+            b, r = i + 1, len(nums) - 1
+            while b < r:
+                sum = num + nums[b] + nums[r]
+                if sum == 0:
+                    res.append([num, nums[b], nums[r]])
+                    b += 1
+                    r -= 1
+                    while b < r and nums[b] == nums[b - 1]:
+                        b += 1
+                    while b < r and nums[r] == nums[r + 1]:
+                        r -= 1
+                elif sum > 0:
+                    b += 1
+                else:
+                    r -= 1
+        return res
