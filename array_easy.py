@@ -333,3 +333,51 @@ class Solution(object):
                 else:
                     r -= 1
         return res
+
+    def threeSumClosest(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        nums.sort()
+        nrs = sys.maxsize
+        nrs_sum = 0
+        for i, v in enumerate(nums):
+            b, r = i + 1, len(nums) - 1
+            while b < r:
+                sum = v + nums[b] + nums[r]
+                dif = sum - target
+                dif_abs = abs(dif)
+                if dif == 0:
+                    return target
+                elif dif < 0:
+                    b += 1
+                else:
+                    r -= 1
+                if dif_abs < nrs:
+                    nrs = dif_abs
+                    nrs_sum = sum
+        return nrs_sum
+
+    def maxDistToClosest(self, seats):
+        """
+        :type seats: List[int]
+        :rtype: int
+        """
+        count = sum(seats)
+        if count == 1:
+            i = seats.index(1)
+            return max(i, len(seats) - i - 1)
+        first = seats.index(1)
+        rev = list(reversed(seats))
+        last = len(seats) - rev.index(1) - 1
+        f = first
+        max_dis = 0
+        for i, v in enumerate(seats):
+            if v == 1:
+                dis = i - f
+                if dis > max_dis:
+                    max_dis = dis
+                f = i
+        return max(first, int(max_dis / 2), (len(seats) - last - 1))
