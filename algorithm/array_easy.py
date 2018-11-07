@@ -381,3 +381,15 @@ class Solution(object):
                     max_dis = dis
                 f = i
         return max(first, int(max_dis / 2), (len(seats) - last - 1))
+
+    def transpose(self, A):
+        """
+        :type A: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        R, C = len(A), len(A[0])
+        ans = [[None] * R for _ in range(C) # not [[None] * R] * C
+        for r, row in enumerate(A):
+            for c, val in enumerate(row):
+                ans[c][r] = val
+        return ans
