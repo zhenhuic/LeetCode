@@ -388,8 +388,39 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         R, C = len(A), len(A[0])
-        ans = [[None] * R for _ in range(C) # not [[None] * R] * C
+        ans = [[None] * R for _ in range(C)]
         for r, row in enumerate(A):
             for c, val in enumerate(row):
                 ans[c][r] = val
         return ans
+
+    def fairCandySwap(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        A.sort()
+        B.sort()
+        p1, p2 = 0, 0
+        A_sum, B_sum = sum(A), sum(B)
+        while p1 < len(A) and p2 < len(B):
+            exd_A_sum = A_sum - A[p1] + B[p2]
+            exd_B_sum = B_sum - B[p2] + A[p1]
+            if exd_A_sum == exd_B_sum:
+                return [A[p1], B[p2]]
+            elif exd_A_sum > exd_B_sum:
+                p1 += 1
+            else:
+                p2 += 1
+
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        # def any_sum(nums, h_idx, r_idx, n, target):
+        #     if n == 2:
+        pass
+
