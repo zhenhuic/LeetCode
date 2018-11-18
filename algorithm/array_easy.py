@@ -429,5 +429,54 @@ class Solution(object):
         :type A: List[int]
         :rtype: bool
         """
-        
+        sorted_A = sorted(A)
+        reversed_A = list(reversed(A))
+        if sorted_A == A or sorted_A == reversed_A:
+            return True
+        else:
+            return False
+
+    def sortArrayByParity(self, A):
+        """
+        :type A: List[int]
+        :rtype: List[int]
+        """
+        h, r = 0, len(A) - 1
+        while h < r:
+            if A[h] % 2 == 1 and A[r] % 2 == 0:
+                A[h], A[r] = A[r], A[h]
+            elif A[h] % 2 != 1:
+                h += 1
+            elif A[r] % 2 != 0:
+                r -= 1
+        return A
+
+    def nextPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        def reverse_list(nums, head, rear):
+            while head < rear:
+                temp = nums[rear]
+                nums[rear] = nums[head]
+                nums[head] = temp
+                head += 1
+                rear -= 1
+
+        r = len(nums) - 2
+        while r >= 0:
+            if nums[r] < nums[r - 1]:
+                break
+            else:
+                r -= 1
+        i = len(nums) - 1
+        while i > r:
+            if nums[i] > nums[r]:
+                break
+            else:
+                i -= 1
+        nums[r], nums[i] = nums[i], nums[r]
+        reverse_list(nums, r + 1, len(nums) - 1)
+
 
