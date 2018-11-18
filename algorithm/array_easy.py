@@ -424,3 +424,10 @@ class Solution(object):
         #     if n == 2:
         pass
 
+    def isMonotonic(self, A):
+        """
+        :type A: List[int]
+        :rtype: bool
+        """
+        
+
