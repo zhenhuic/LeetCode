@@ -456,27 +456,29 @@ class Solution(object):
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        def reverse_list(nums, head, rear):
-            while head < rear:
-                temp = nums[rear]
-                nums[rear] = nums[head]
-                nums[head] = temp
-                head += 1
-                rear -= 1
 
-        r = len(nums) - 2
-        while r >= 0:
-            if nums[r] < nums[r - 1]:
-                break
-            else:
-                r -= 1
-        i = len(nums) - 1
-        while i > r:
-            if nums[i] > nums[r]:
-                break
-            else:
-                i -= 1
-        nums[r], nums[i] = nums[i], nums[r]
-        reverse_list(nums, r + 1, len(nums) - 1)
+        def swap(nums, i, j):
+            temp = nums[i]
+            nums[i] = nums[j]
+            nums[j] = temp
+
+        def reverse(nums, start):
+            i = start
+            j = len(nums) - 1
+            while i < j:
+                swap(nums, i, j)
+                i += 1
+                j -= 1
+
+        i = len(nums) - 2
+        while i >= 0 and nums[i + 1] <= nums[i]:
+            i -= 1
+        if i >= 0:
+            j = len(nums) - 1
+            while j >= 0 and nums[j] <= nums[i]:
+                j -= 1
+            swap(nums, i, j)
+
+        reverse(nums, i + 1)
 
 
