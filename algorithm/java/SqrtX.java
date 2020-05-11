@@ -22,6 +22,14 @@ class SqrtX {
         return ans;
     }
 
+    public int mySqrtMath(int x) {
+        if (x == 0) {
+            return 0;
+        }
+        int ans = (int)Math.exp(0.5 * Math.log(x));
+        return (long)(ans + 1) * (ans + 1) <= x ? ans + 1 : ans;
+    }
+
     public static void main(String[] args) {
         SqrtX sqrtX = new SqrtX();
         System.out.println(sqrtX.mySqrt(1));
