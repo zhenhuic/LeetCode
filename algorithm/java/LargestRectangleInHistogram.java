@@ -28,7 +28,7 @@ class LargestRectangleInHistogram {
      * 用栈实现
      */
     public int largestRectangleAreaStack(int[] heights) {
-        Stack< Integer> stack = new Stack <> ();
+        Stack<Integer> stack = new Stack<>();
         stack.push(-1);
         int maxarea = 0;
         for (int i = 0; i < heights.length; ++i) {
