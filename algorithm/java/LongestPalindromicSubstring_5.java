@@ -1,7 +1,7 @@
 /**
  * 5. 最长回文子串
  */
-class LongestPalindromicSubstring {
+class LongestPalindromicSubstring_5 {
     /**
      * 循环遍历对每个以索引为 i 和 i，i + 1 为中心向前后扩展,
      * 存储最长回文子串的头尾索引

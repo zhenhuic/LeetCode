@@ -1,7 +1,7 @@
 /**
  * 50. Pow(x, n)
  */
-class PowXN {
+class PowXN_50 {
     /**
      * 快速幂算法 + 递归
      */

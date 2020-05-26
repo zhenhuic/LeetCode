@@ -1,7 +1,7 @@
 /**
  * 69. x 的平方根
  */
-class SqrtX {
+class SqrtX_69 {
     /**
      * 二分查找
      */
@@ -31,7 +31,7 @@ class SqrtX {
     }
 
     public static void main(String[] args) {
-        SqrtX sqrtX = new SqrtX();
+        SqrtX_69 sqrtX = new SqrtX_69();
         System.out.println(sqrtX.mySqrt(1));
     }
 }

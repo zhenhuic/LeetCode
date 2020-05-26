@@ -4,7 +4,7 @@ import java.util.Map;
 /**
  * 1. 两数之和
  */
-public class TwoSum {
+public class TwoSum_1 {
     /**
      * 利用 Map 快速找到 target - nums[i] 值对应的索引
      */

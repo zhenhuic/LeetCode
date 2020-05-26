@@ -4,11 +4,11 @@ import java.util.Stack;
  * 155. 最小栈
  * 维护一个辅助栈
  */
-class MinStack {
+class MinStack_155 {
     Stack<Integer> data = new Stack<>();
     Stack<Integer> min = new Stack<>();
     
-    public MinStack() {
+    public MinStack_155() {
     }
     
     public void push(int x) {

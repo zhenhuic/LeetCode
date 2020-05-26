@@ -4,7 +4,7 @@ import java.util.Map;
 /**
  * 560. 和为K的子数组
  */
-class SubarraySumEqualsK {
+class SubarraySumEqualsK_560 {
     /**
      * 前缀和 + 哈希表优化
      * 我们定义 pre[i] 为 [0..i] 里所有数的和，

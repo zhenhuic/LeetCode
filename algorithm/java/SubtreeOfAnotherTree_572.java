@@ -3,7 +3,7 @@ import entity.TreeNode;
 /**
  * 572. 另一个树的子树
  */
-public class SubtreeOfAnotherTree {
+public class SubtreeOfAnotherTree_572 {
     /**
      * DFS暴力匹配
      */
@@ -33,7 +33,7 @@ public class SubtreeOfAnotherTree {
         TreeNode t = new TreeNode(1);
         t.left = new TreeNode(2);
 
-        SubtreeOfAnotherTree sub = new SubtreeOfAnotherTree();
+        SubtreeOfAnotherTree_572 sub = new SubtreeOfAnotherTree_572();
         System.out.println(sub.isSubtree(s, t));
     }
 }

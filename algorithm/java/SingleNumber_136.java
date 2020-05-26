@@ -1,7 +1,7 @@
 /**
  * 136. 只出现一次的数字
  */
-class SingleNumber {
+class SingleNumber_136 {
     /**
      * 使用异或运算
      */

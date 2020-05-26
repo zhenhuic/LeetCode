@@ -4,7 +4,7 @@ import java.util.Stack;
  * 84. 柱状图中最大的矩形
  * 困难
  */
-class LargestRectangleInHistogram {
+class LargestRectangleInHistogram_84 {
     /**
      * 找出最矮的柱子，然后分治
      */

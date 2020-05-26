@@ -4,7 +4,7 @@ import java.util.Arrays;
  * 85. 最大矩形
  * 困难
  */
-class MaximalRectangle {
+class MaximalRectangle_85 {
     /**
      * 动态规划
      * 从上到下，分别找到当前位置为底的矩形的最大高度和左右边界索引，

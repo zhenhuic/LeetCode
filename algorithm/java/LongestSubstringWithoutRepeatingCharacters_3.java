@@ -3,7 +3,7 @@ import java.util.HashSet;
 /**
  * 3. 无重复字符的最长子串
  */
-class LongestSubstringWithoutRepeatingCharacters {
+class LongestSubstringWithoutRepeatingCharacters_3 {
     /**
      * 用一个 HashSet 做滑动窗口
      */

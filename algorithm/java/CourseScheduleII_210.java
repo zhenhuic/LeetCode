@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * 210. 课程表 II
  */
-class CourseScheduleII {
+class CourseScheduleII_210 {
     /**
      * 拓扑排序
      * 先将入度为 0 的节点放入队列，

@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * 6. Z 字形变换
  */
-class ZigZagConversion {
+class ZigZagConversion_6 {
     /**
      * 模拟 Z 字形顺序将字符按行存储，
      * 最后将各行拼接出结果字符串

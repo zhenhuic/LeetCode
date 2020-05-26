@@ -1,7 +1,7 @@
 /**
  * 221. 最大正方形
  */
-public class MaximalSquare {
+public class MaximalSquare_221 {
     /**
      * 动态规划
      * 用 dp[i][j] 表示以 (i, j) 为右下角的最大正方形的边长,

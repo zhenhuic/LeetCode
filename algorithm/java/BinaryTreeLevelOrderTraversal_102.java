@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 102. 二叉树的层序遍历
  */
-class BinaryTreeLevelOrderTraversal {
+class BinaryTreeLevelOrderTraversal_102 {
     /**
      * 用一个队列就行
      */

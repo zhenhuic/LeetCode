@@ -3,7 +3,7 @@ import entity.ListNode;
 /**
  * 25. K 个一组翻转链表
  */
-class ReverseNodesInKGroup {
+class ReverseNodesInKGroup_25 {
     /**
      * 把大任务分成小任务，理清思路再动手
      */

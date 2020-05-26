@@ -1,7 +1,7 @@
 /**
  * 7. 整数反转
  */
-class ReverseInteger {
+class ReverseInteger_7 {
     /**
      * 弹出和推入数字 & 溢出前进行检查
      */
@@ -37,6 +37,6 @@ class ReverseInteger {
     }
 
     public static void main(String[] args) {
-        System.out.println(ReverseInteger.reverseToString(-2147483648));
+        System.out.println(ReverseInteger_7.reverseToString(-2147483648));
     }
 }

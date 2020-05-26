@@ -1,7 +1,7 @@
 /**
  * 152. 乘积最大子数组
  */
-class MaximumProductSubarray {
+class MaximumProductSubarray_152 {
     /**
      * 动态规划
      * 状态转移方程:

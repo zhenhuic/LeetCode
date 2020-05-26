@@ -1,7 +1,7 @@
 /**
  * 4. 寻找两个正序数组的中位数
  */
-class MedianOfTwoSortedArrays {
+class MedianOfTwoSortedArrays_4 {
     /**
      * 比较两个数组中 nums1[k / 2] 和 nums2[k / 2]的数，
      * 排除掉较小那 k / 2 部分的数，更新 k，
@@ -40,7 +40,7 @@ class MedianOfTwoSortedArrays {
     }
 
     public static void main(String[] args) {
-        MedianOfTwoSortedArrays p = new MedianOfTwoSortedArrays();
+        MedianOfTwoSortedArrays_4 p = new MedianOfTwoSortedArrays_4();
         System.out.println(p.findMedianSortedArrays(new int[]{1, 2}, new int[]{1, 2}));
     }
 }
