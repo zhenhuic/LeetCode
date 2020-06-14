@@ -4,6 +4,12 @@ import java.util.*;
  * 39. 组合总和
  */
 public class CombinationSum_39 {
+    /**
+     * 动态规划
+     * 注意去重
+     * 在搜索的时候，需要设置搜索起点的下标 begin ，由于一个数可以使用多次，下一层的结点从这个搜索起点开始搜索；
+     * 在搜索起点 begin 之前的数因为以前的分支搜索过了，所以一定会产生重复。
+     */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
         int len = candidates.length;
