@@ -3,6 +3,7 @@
  */
 class SingleNumber_136 {
     /**
+     * 因为其余每个元素均出现两次
      * 使用异或运算
      */
     public int singleNumber(int[] nums) {
