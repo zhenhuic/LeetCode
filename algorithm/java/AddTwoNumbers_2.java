@@ -31,4 +31,37 @@ public class AddTwoNumbers_2 {
         }
         return pre.next;
     }
+
+    /**
+     * 复用原来的节点
+     */
+    public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null) return null;
+        ListNode dummy = new ListNode(0);
+        ListNode pre = dummy;
+        int take = 0;
+        while (l1 != null && l2 != null) {
+            int sum = l1.val + l2.val + take;
+            l1.val = sum % 10;
+            take = sum / 10;
+            pre.next = l1;
+            pre = l1;
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        pre.next = l1 != null ? l1 : l2;
+        while (take > 0) {
+            if (pre.next == null) {
+                int val = take % 10;
+                take = take / 10;
+                pre.next = new ListNode(val);
+            } else {
+                int sum = pre.next.val + take;
+                pre.next.val = sum % 10;
+                take = sum / 10;
+            }
+            pre = pre.next;
+        }
+        return dummy.next;
+    }
 }

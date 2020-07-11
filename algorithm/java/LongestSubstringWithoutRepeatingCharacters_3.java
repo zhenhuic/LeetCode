@@ -1,24 +1,30 @@
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 3. 无重复字符的最长子串
  */
 class LongestSubstringWithoutRepeatingCharacters_3 {
     /**
-     * 用一个 HashMap 做滑动窗口
+     * 用一个 HashMap 做滑动窗口，
+     * 当一个 map 里已经存在当前字符且它的索引大于等于 start，
+     * 就更新最大值和 start。
      */
-    public int lengthOfLongestSubstring(String s) {
-        if (s.length() <= 1) return s.length();
-        HashMap<Character, Integer> map = new HashMap<>();
-        int max = 0;
-        int left = 0;
+    public int lengthOfLongestSubstring1(String s) {
+        if (s == null || s.length() == 0) return 0;
+
+        Map<Character, Integer> map = new HashMap<>();
+        int maxLen = 1;
+        int start = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                left = Math.max(left, map.get(s.charAt(i)) + 1);  // 注意这里需要加 1
+            char c = s.charAt(i);
+            if (map.containsKey(c) && map.get(c) >= start) {
+                maxLen = Math.max(maxLen, i - start);
+                start = map.get(c) + 1;
             }
-            map.put(s.charAt(i), i);
-            max = Math.max(max, i - left + 1);
+            map.put(c, i);
         }
-        return max;
+        maxLen = Math.max(maxLen, s.length() - start);
+        return maxLen;
     }
 }
