@@ -31,4 +31,35 @@ class LongestPalindromicSubstring_5 {
         }
         return new int[]{left, right};
     }
+
+    /**
+     * 动态规划，第二遍写
+     */
+    public String longestPalindrome1(String s) {
+        if (s == null || s.length() == 0) return "";
+        int len = s.length();
+        boolean[][] dp = new boolean[len][len];
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+        int max = 1;
+        int left = 0, right = 1;
+        for (int i = len - 2; i >= 0; i--) {
+            for (int j = i + 1; j < len; j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (j - i == 1) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                }
+                if (dp[i][j] && j - i + 1 > max) {
+                    max = j - i;
+                    left = i;
+                    right = j + 1;
+                }
+            }
+        }
+        return s.substring(left, right);
+    }
 }

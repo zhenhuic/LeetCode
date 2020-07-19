@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 20. 有效的括号
@@ -27,5 +27,35 @@ public class ValidParentheses_20 {
             }
         }
         return stack.size() == 0;
+    }
+
+    /**
+     * 第二遍刷，用了 Map 映射左右括号
+     */
+    public boolean isValid1(String s) {
+        Map<Character, Character> map = new HashMap<>();
+        map.put('(', ')');
+        map.put('[', ']');
+        map.put('{', '}');
+
+        int len = s.length();
+        Deque<Character> stack = new LinkedList<>();
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                stack.addLast(c);
+            } else {
+                if (!stack.isEmpty() && map.get(stack.peekLast()) == c) {
+                    stack.removeLast();
+                } else {
+                    return false;
+                }
+            }
+        }
+        if (stack.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

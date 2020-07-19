@@ -30,4 +30,40 @@ public class GroupAnagrams_49 {
         }
         return new ArrayList<>(ans.values());
     }
+
+    /**
+     * 第二遍写
+     */
+    public List<List<String>> groupAnagrams1(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            String code = encode(str);
+            List<String> list = map.get(code);
+            if (list == null) {
+                list = new ArrayList<>();
+                map.put(code, list);
+            }
+            list.add(str);
+        }
+        List<List<String>> result = new ArrayList<>();
+        for (String key : map.keySet()) {
+            result.add(map.get(key));
+        }
+        return result;
+    }
+
+    private String encode(String s) {
+        int[] count = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+        }
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < 26; i++) {
+            if (count[i] > 0) {
+                code.append('a' + i);
+                code.append(count[i]);
+            }
+        }
+        return code.toString();
+    }
 }

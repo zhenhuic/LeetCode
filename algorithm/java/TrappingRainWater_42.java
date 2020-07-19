@@ -42,4 +42,27 @@ public class TrappingRainWater_42 {
         }
         return ans;
     }
+
+    /**
+     * 第二次写出来了，知道思想的
+     */
+    public int trap1(int[] height) {
+        if (height == null || height.length == 0) return 0;
+        int l = 0, r = height.length - 1;
+        int lh = height[0], rh = height[r];
+        int water = 0;
+
+        while (l < r) {
+            if (height[l] <= height[r]) {
+                lh = Math.max(lh, height[l]);
+                water += lh - height[l];
+                l++;
+            } else if (height[l] > height[r]) {
+                rh = Math.max(rh, height[r]);
+                water += rh - height[r];
+                r--;
+            }
+        }
+        return water;
+    }
 }

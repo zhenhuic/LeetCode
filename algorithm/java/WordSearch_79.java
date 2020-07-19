@@ -57,4 +57,42 @@ public class WordSearch_79 {
         }
         return false;
     }
+
+    /**
+     * 二刷
+     */
+    public boolean exist1(char[][] board, String word) {
+        if (word == null || word.length() == 0) return false;
+        int rowLen = board.length, colLen = board[0].length;
+        boolean[][] visited = new boolean[rowLen][colLen];
+        for (int i = 0; i < rowLen; i++) {
+            for (int j = 0; j < colLen; j++) {
+                if(dfs(board, i, j, word, 0, visited)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean dfs(char[][] board, int row, int col,
+                        String word, int idx, boolean[][] visited) {
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length)
+            return false;
+
+        if (board[row][col] == word.charAt(idx) && !visited[row][col]) {
+            if (idx == word.length() - 1) {
+                return true;
+            } else {
+                visited[row][col] = true;
+                boolean ret =  dfs(board, row + 1, col, word, idx + 1, visited) ||
+                        dfs(board, row - 1, col, word, idx + 1, visited) ||
+                        dfs(board, row, col + 1, word, idx + 1, visited) ||
+                        dfs(board, row, col - 1, word, idx + 1, visited);
+                visited[row][col] = false;
+                return ret;
+            }
+        }
+        return false;
+    }
 }

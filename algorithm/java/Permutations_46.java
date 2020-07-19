@@ -41,4 +41,32 @@ public class Permutations_46 {
             }
         }
     }
+
+    /**
+     * 第二遍写，不用 Set，这样更快
+     */
+    public List<List<Integer>> permute1(int[] nums) {
+        int len = nums.length;
+        boolean[] used = new boolean[len];
+        List<Integer> path = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        permuteCore(nums, used, path, result);
+        return result;
+    }
+
+    private void permuteCore(int[] nums, boolean[] used, List<Integer> path, List<List<Integer>> result) {
+        if (path.size() == nums.length) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (!used[i]) {
+                path.add(nums[i]);
+                used[i] = true;
+                permuteCore(nums, used, path, result);
+                used[i] = false;
+                path.remove(path.size() - 1);
+            }
+        }
+    }
 }

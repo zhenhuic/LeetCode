@@ -47,4 +47,33 @@ public class LetterCombinationsOfAPhoneNumber_17 {
             }
         }
     }
+
+    /**
+     * 第二遍写
+     */
+    public List<String> letterCombinations1(String digits) {
+        if (digits.length() == 0) return new ArrayList<>();
+        String[] keypad = new String[]{"", "", "abc", "def", "ghi", "jkl",
+                "mno", "pqrs", "tuv", "wxyz"};
+        StringBuilder sb = new StringBuilder();
+        List<String> result = new ArrayList<>();
+
+        backtrack(digits, 0, keypad, sb, result);
+        return result;
+    }
+
+    private void backtrack(String digits, int idx, String[] keypad,
+                           StringBuilder prefix, List<String> result) {
+        if (idx == digits.length()) {
+            result.add(prefix.toString());
+            return;
+        }
+        char c = digits.charAt(idx);
+        String letters = keypad[c - '0'];
+        for (int i = 0; i < letters.length(); i++) {
+            prefix.append(letters.charAt(i));
+            backtrack(digits, idx + 1, keypad, prefix, result);
+            prefix.deleteCharAt(prefix.length() - 1);
+        }
+    }
 }
