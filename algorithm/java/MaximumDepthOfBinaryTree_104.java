@@ -15,13 +15,12 @@ public class MaximumDepthOfBinaryTree_104 {
         return md;
     }
 
-    private void dfs(TreeNode root, int depth) {
-        if (root != null) {
-            depth++;
-            if (depth > md) md = depth;
-
-            dfs(root.left, depth);
-            dfs(root.right, depth);
+    private void dfs(TreeNode root, int curDepth) {
+        if (root == null) {
+            md = Math.max(md, curDepth);
+            return;
         }
+        dfs(root.left, curDepth + 1);
+        dfs(root.right, curDepth + 1);
     }
 }

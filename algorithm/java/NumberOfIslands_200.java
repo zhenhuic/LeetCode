@@ -4,7 +4,7 @@
 public class NumberOfIslands_200 {
     /**
      * 遍历每一个格子，遇到为 1 的格子计数器加 1，
-     * 再深度优先遍历将相邻的格子改成 1
+     * 再深度优先遍历将相邻的格子改成 0
      */
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) return 0;

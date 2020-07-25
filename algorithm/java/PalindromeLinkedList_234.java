@@ -48,4 +48,27 @@ public class PalindromeLinkedList_234 {
         }
         return prev;
     }
+
+    /**
+     * 递归到链表尾部，再依次退出调用栈，对应地从头节点比较
+     */
+    ListNode symNode;
+    public boolean isPalindrome1(ListNode head) {
+        symNode = head;
+        return isPalindromeCore(head);
+    }
+
+    private boolean isPalindromeCore(ListNode node) {
+        if (node != null) {
+            if (isPalindromeCore(node.next)) {
+                if (symNode.val == node.val) {
+                    symNode = symNode.next;
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

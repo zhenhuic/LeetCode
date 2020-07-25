@@ -12,6 +12,10 @@ public class FindTheDuplicateNumber_287 {
      * 根据「Floyd 判圈算法」两个指针在有环的情况下一定会相遇，
      * 此时我们再将 slow 放置起点 0，
      * 两个指针每次同时移动一步，相遇的点就是答案。
+     *
+     * 这里和链表找进入环的节点一样，
+     * 第二次要将指针指向最初始位置，这里是 0。
+     * 下面两种写法没有差别，关键在于 slow 第二次是置 0。
      */
 
     public int findDuplicateFastSlowPointer(int[] nums) {
@@ -26,6 +30,20 @@ public class FindTheDuplicateNumber_287 {
             fast = nums[fast];
         }
         return slow;
+    }
+
+    public int findDuplicate1(int[] nums) {
+        int slow = nums[0], fast = nums[nums[0]];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return fast;
     }
 
     /**

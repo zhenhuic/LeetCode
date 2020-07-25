@@ -9,6 +9,14 @@ public class LinkedListCycleII_142 {
      * 将 fast指针重新 指向链表头部节点，
      * slow 和 fast 同时每轮向前走 1 步。
      * 不用计算环内节点的个数。
+     *
+     * 公式：
+     * 设慢指针走的步数为 n，那么快指针走的步数就是 2n，
+     * 从头节点进入环需要 s 步，环内的步数（环内节点的个数）为 c；
+     * 满足 (n - s) % c = (2 * n - s) % c；
+     *
+     * 第二次快慢指针同步走能相遇满足：
+     * s = c - (n - s) % c；
      */
     public ListNode detectCycle(ListNode head) {
         ListNode fast = head, slow = head;

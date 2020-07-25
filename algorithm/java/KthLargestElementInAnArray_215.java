@@ -5,7 +5,7 @@ import java.util.Random;
  */
 public class KthLargestElementInAnArray_215 {
     /**
-     * 
+     * 基于快速排序的选择方法
      */
     public int findKthLargest(int[] nums, int k) {
         int len = nums.length;

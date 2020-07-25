@@ -31,4 +31,16 @@ public class LowestCommonAncestorOfABinaryTree_236 {
         }
         return leftSon || rightSon || root.val == p.val || root.val == q.val;
     }
+
+    /**
+     * 更牛的写法
+     */
+    public TreeNode lowestCommonAncestor1(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) return root;
+        TreeNode left = lowestCommonAncestor1(root.left, p, q);
+        TreeNode right = lowestCommonAncestor1(root.right, p, q);
+        if (left == null) return right;
+        if (right == null) return left;
+        return root;
+    }
 }
