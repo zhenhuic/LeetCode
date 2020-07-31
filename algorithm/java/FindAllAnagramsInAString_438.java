@@ -41,4 +41,35 @@ public class FindAllAnagramsInAString_438 {
         }
         return res;
     }
+
+    /**
+     * 将字符串通过字符个数编码，
+     * 比较暴力
+     */
+    public List<Integer> findAnagramsStringEncoding(String s, String p) {
+        List<Integer> result = new ArrayList<>();
+        if (s == null || s.length() < p.length()) return result;
+
+        int pLen = p.length();
+        String pCode = encoding(p, 0, pLen - 1);
+        for (int i = 0; i < s.length() - pLen + 1; i++) {
+            if (pCode.equals(encoding(s, i, i + pLen - 1))) {
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
+    private String encoding(String p, int start, int end) {
+        int[] count = new int[26];
+        for (int i = start; i <= end; i++) {
+            count[p.charAt(i) - 'a']++;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i< 26; i++) {
+            sb.append('a' + i);
+            sb.append(count[i]);
+        }
+        return sb.toString();
+    }
 }

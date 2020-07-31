@@ -12,7 +12,7 @@ public class DiameterOfBinaryTree_543 {
      */
     public int diameterOfBinaryTree(TreeNode root) {
         depth(root);
-        return diameter > 0 ? diameter - 1 : 0;
+        return diameter > 0 ? diameter - 1 : 0;  // diameter 是
     }
 
     private int depth(TreeNode root) {

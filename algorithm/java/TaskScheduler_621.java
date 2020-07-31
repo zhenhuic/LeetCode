@@ -11,7 +11,6 @@ public class TaskScheduler_621 {
     public int leastInterval(char[] tasks, int n) {
         if (tasks == null || tasks.length == 0) return 0;
 
-        int len = tasks.length;
         int[] count = new int[26];
         for (int t : tasks) {
             count[t - 'A']++;
@@ -20,7 +19,7 @@ public class TaskScheduler_621 {
         Arrays.sort(count);
         while (count[25] > 0) {
             for (int i = 0; i <= n; i++) {
-                if (count[25] == 0) break;
+                if (count[25] == 0) break;  // 最后一轮没有任务后提前结束
                 if (i < 26 && count[25 - i] > 0) {
                     count[25 - i]--;
                 }
