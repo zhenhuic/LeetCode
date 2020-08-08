@@ -5,16 +5,17 @@ import java.util.List;
 public class Sort {
     public static void main(String[] args) {
         Sort sort = new Sort();
-        int[] arr = {5, 18, 6, 34, 9, 10, 613, 4, 6, 50};
+//        int[] arr = {5, 18, 9, 6, 34, 9, 10, 613, 4, 6, 50};
+        int[] arr = {25,84,21,47,15,27,68,35,20};
 
 //        sort.shellSort(arr);
 //        sort.mergeSort(arr);
-//        sort.quickSort(arr);
+        sort.quickSort(arr);
 //        sort.heapSort(arr);
 //        sort.radixSort(arr);
 //        sort.insertSort(arr);
 //        sort.bubbleSort(arr);
-        sort.selectSort(arr);
+//        sort.selectSort(arr);
 
         System.out.println(Arrays.toString(arr));
     }

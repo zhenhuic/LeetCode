@@ -1,6 +1,24 @@
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        boolean positive = true;
+        int minusCnt = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '-') minusCnt++;
+        }
+        if ((minusCnt & 1) == 1) positive = false;
+
+        String digits = str.replaceAll("\\D", "");
+        long num = (positive ? 1 : -1) * Long.parseLong(digits);
+
+        System.out.println(num);
+    }
+
     public static void main2(String[] args) {
         Scanner sc = new Scanner(System.in);
         ListNode head = new ListNode(0);
@@ -31,7 +49,7 @@ public class Main {
         }
     }
 
-    public static void main1(String[] args) {
+    public static void main11(String[] args) {
         Scanner sc = new Scanner(System.in);
         LinkedHashSet<Long> set = new LinkedHashSet<>();
         String[] strs = sc.nextLine().split(" ");
@@ -74,7 +92,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         Scanner sc = new Scanner(System.in);
         int row = sc.nextInt();
         int col = sc.nextInt();
