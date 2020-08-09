@@ -5,6 +5,9 @@ import java.util.Arrays;
  */
 public class CoinChange_322 {
     /**
+     * 这题贪心算法不行！不行！！
+     * 那是因为
+     *
      * 动态规划
      * 定义 F(i) 为组成金额 i 所需最少的硬币数量，
      * 假设在计算 F(i) 之前，
@@ -15,16 +18,13 @@ public class CoinChange_322 {
      */
     public int coinChange(int[] coins, int amount) {
         if (coins == null || coins.length == 0) return -1;
-        if (amount == 0) return 0;
-
+        Arrays.sort(coins);
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, amount + 1);
         dp[0] = 0;
-        for (int i = 1; i < amount + 1; i++) {
-            for (int coin : coins) {
-                if (coin <= i) {
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-                }
+        for (int i = 1; i <= amount; i++) {
+            dp[i] = amount + 1;
+            for (int j = 0; j < coins.length && coins[j] <= i; j++) {
+                dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
             }
         }
         return dp[amount] < amount + 1 ? dp[amount] : -1;

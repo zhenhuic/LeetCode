@@ -34,4 +34,37 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal_105 {
                 pr, inorder, idx + 1, ir, inorderMap);
         return root;
     }
+
+    /**
+     * 先算出左右子树节点个数
+     */
+    public TreeNode buildTree1(int[] preorder, int[] inorder) {
+        if (preorder == null || preorder.length == 0 ||inorder == null || inorder.length == 0) return null;
+        Map<Integer, Integer> inorderMap = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++) {
+            inorderMap.put(inorder[i], i);
+        }
+        return buildTreeCore1(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, inorderMap);
+    }
+
+    private TreeNode buildTreeCore1(int[] preorder, int preLeft, int preRight,
+                                    int[] inorder, int inLeft, int inRight,
+                                    Map<Integer, Integer> inorderMap) {
+        TreeNode root = new TreeNode(preorder[preLeft]);
+        if (preLeft == preRight) return root;
+
+        int rootInIdx = inorderMap.get(preorder[preLeft]);
+        int leftChildNum = rootInIdx - inLeft;
+        int rightChildNum = inRight - rootInIdx;
+
+        if (leftChildNum > 0) {
+            root.left = buildTreeCore(preorder, preLeft + 1, preLeft + leftChildNum,
+                    inorder, inLeft, rootInIdx - 1, inorderMap);
+        }
+        if (rightChildNum > 0) {
+            root.right = buildTreeCore(preorder, preRight - rightChildNum + 1, preRight,
+                    inorder, rootInIdx + 1, inRight, inorderMap);
+        }
+        return root;
+    }
 }

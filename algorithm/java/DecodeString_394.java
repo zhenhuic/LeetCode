@@ -48,29 +48,31 @@ public class DecodeString_394 {
      * 第一个表示子序列结束索引，第二个表示子序列
      */
     public String decodeStringRecursive(String s) {
-        return dfs(s, 0)[0];
+        return dfs(s, 0)[1];
     }
+
     private String[] dfs(String s, int i) {
-        StringBuilder res = new StringBuilder();
-        int multi = 0;
-        while(i < s.length()) {
-            if(s.charAt(i) >= '0' && s.charAt(i) <= '9')
-                multi = multi * 10 + Integer.parseInt(String.valueOf(s.charAt(i)));
-            else if(s.charAt(i) == '[') {
-                String[] tmp = dfs(s, i + 1);
-                // 将返回回来的索引赋给 i，跳出子括号
-                i = Integer.parseInt(tmp[0]);
-                while(multi > 0) {
-                    res.append(tmp[1]);
-                    multi--;
+        StringBuilder sb = new StringBuilder();
+        int cnt = 0;
+        while (i < s.length()) {
+            char c = s.charAt(i);
+            if (c >= '0' && c <= '9') {
+                cnt = cnt * 10 + (c - '0');
+            } else if (c == '[') {  // 递归处理括号内的序列
+                String[] subs = dfs(s, i + 1);
+                for (int j = 0; j < cnt; j++) {
+                    sb.append(subs[1]);
                 }
+                cnt = 0;
+                // 将返回回来的索引赋给 i，跳出子括号
+                i = Integer.parseInt(subs[0]);
+            } else if (c == ']') {  // 括号结束返回括号内的序列和索引值
+                return new String[] {String.valueOf(i), sb.toString()};
+            } else {
+                sb.append(s.charAt(i));
             }
-            else if(s.charAt(i) == ']')
-                return new String[] { String.valueOf(i), res.toString()};
-            else
-                res.append(s.charAt(i));
             i++;
         }
-        return new String[] { res.toString() };
+        return new String[] {String.valueOf(0), sb.toString()};
     }
 }

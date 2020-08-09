@@ -7,16 +7,17 @@ import java.util.Map;
  * 17. 电话号码的字母组合
  */
 public class LetterCombinationsOfAPhoneNumber_17 {
-    Map<String, String> phone = new HashMap<>() {{
-        put("2", "abc");
-        put("3", "def");
-        put("4", "ghi");
-        put("5", "jkl");
-        put("6", "mno");
-        put("7", "pqrs");
-        put("8", "tuv");
-        put("9", "wxyz");
-    }};
+//    Map<String, String> phone = new HashMap<>() {{
+//        put("2", "abc");
+//        put("3", "def");
+//        put("4", "ghi");
+//        put("5", "jkl");
+//        put("6", "mno");
+//        put("7", "pqrs");
+//        put("8", "tuv");
+//        put("9", "wxyz");
+//    }};
+    Map<String, String> phone = new HashMap<>();
 
     List<String> output = new ArrayList<>();
 

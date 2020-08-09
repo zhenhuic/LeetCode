@@ -7,7 +7,7 @@ class LongestPalindromicSubstring_5 {
      * 存储最长回文子串的头尾索引
      */
     public String longestPalindrome(String s) {
-        if (s == null || s.isBlank()) return "";
+        if (s == null || s.length() == 0) return "";
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
             int[] se1 = expandAroundCenter(s, i, i);

@@ -80,6 +80,7 @@ public class HouseRobberIII_337 {
         int[] left = robCore(root.left);
         int[] right = robCore(root.right);
         // 注意，这里需要比较偷或者不偷的情况，因为可以选择偷或不偷
+        // 当前家不偷，下一家也可以选择偷或不偷，下家不是一定要偷的
         money[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
         money[1] = left[0] +right[0] + root.val;
         return money;

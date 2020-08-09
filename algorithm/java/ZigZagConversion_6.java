@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ class ZigZagConversion_6 {
      * 最后将各行拼接出结果字符串
      */
     public String convert(String s, int numRows) {
-        if (s == null || s.isBlank()) return "";
+        if (s == null || s.length() == 0) return "";
         if (numRows == 1) return s;
         List<StringBuilder> rows = new ArrayList<>();
         int n = s.length();

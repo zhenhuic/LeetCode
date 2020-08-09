@@ -1,10 +1,13 @@
 import entity.TreeNode;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * 145. 二叉树的后序遍历
+ *
+ * 后序遍历就是先右后左的前序遍历的倒转
  */
 public class BinaryTreePostorderTraversal_145 {
     /**
@@ -17,22 +20,17 @@ public class BinaryTreePostorderTraversal_145 {
      * 所以下面结果用的是 LinkedList 的头插
      */
     public List<Integer> postorderTraversal(TreeNode root) {
-        LinkedList<TreeNode> stack = new LinkedList<>();
         LinkedList<Integer> result = new LinkedList<>();
-        if (root == null) {
-            return result;
-        }
-
-        stack.add(root);
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pollLast();
-            result.addFirst(node.val);  // 头插
-            if (node.left != null) {
-                stack.add(node.left);
+        if (root == null) return result;
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                result.addFirst(cur.val);
+                stack.addLast(cur);
+                cur = cur.right;
             }
-            if (node.right != null) {
-                stack.add(node.right);
-            }
+            cur = stack.pollLast().left;
         }
         return result;
     }

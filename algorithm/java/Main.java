@@ -1,22 +1,37 @@
-import java.io.IOException;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-
-        boolean positive = true;
-        int minusCnt = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '-') minusCnt++;
+        int cnt = sc.nextInt();
+        int[] a = new int[cnt];
+        int[] index = new int[cnt];
+        Map<Integer, Integer> bMap = new HashMap<>();
+        for (int i = 0; i < cnt; i++) {
+            a[i] = sc.nextInt();
         }
-        if ((minusCnt & 1) == 1) positive = false;
+        for (int i = 0; i < cnt; i++) {
+            bMap.put(sc.nextInt(), i);
+        }
+        for (int i = 0; i < cnt; i++) {
+            index[i] = bMap.get(a[i]);
+        }
 
-        String digits = str.replaceAll("\\D", "");
-        long num = (positive ? 1 : -1) * Long.parseLong(digits);
+        int maxLen = 0;
+        int curLen = 1;
+        int prior = index[0];
+        for (int i = 1; i < cnt; i++) {
+            if (index[i] > prior) {
+                curLen++;
+            } else {
+                maxLen = Math.max(maxLen, curLen);
+                curLen = 1;
+            }
+            prior = index[i];
+        }
+        maxLen = Math.max(maxLen, curLen);
 
-        System.out.println(num);
+        System.out.println(cnt - maxLen);
     }
 
     public static void main2(String[] args) {

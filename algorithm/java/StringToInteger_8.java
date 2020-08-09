@@ -6,7 +6,7 @@ class StringToInteger_8 {
      * 注意判断数字越界技巧
      */
     public int myAtoi(String str) {
-        if (str == null || str.length() == 0 || str.isBlank())
+        if (str == null || str.length() == 0)
             return 0;
         int start = 0;
         while (str.charAt(start) == ' ') start++;

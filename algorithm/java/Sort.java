@@ -198,15 +198,15 @@ public class Sort {
      */
     private void heapify(int[] nums, int index, int length) {
         int leftChild = index * 2 + 1;  // 左子节点索引
-        int rightChile = index * 2 + 2;  // 右子节点索引
+        int rightChild = index * 2 + 2;  // 右子节点索引
         int cur = index;
 
         // 找出当前节点和左右子节点中值最大的节点
         if (leftChild < length && nums[leftChild] > nums[cur]) {
             cur = leftChild;
         }
-        if (rightChile < length && nums[rightChile] > nums[cur]) {
-            cur = rightChile;
+        if (rightChild < length && nums[rightChild] > nums[cur]) {
+            cur = rightChild;
         }
 
         // 当前节点不是最大的，做交换，

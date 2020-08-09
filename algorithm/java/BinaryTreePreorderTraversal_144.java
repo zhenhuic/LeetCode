@@ -1,5 +1,6 @@
 import entity.TreeNode;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,27 +24,23 @@ public class BinaryTreePreorderTraversal_144 {
      *     }
      *     p = S栈顶弹出;
      * }
+     *
+     * 8.2 更精简的写法
      */
     public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) return result;
         Deque<TreeNode> stack = new LinkedList<>();
-        LinkedList<Integer> output = new LinkedList<>();
-        if (root == null) {
-            return output;
-        }
-
-        stack.addLast(root);
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pollLast();
-            // 这部分和后序遍历很像，但注意区别
-            output.add(node.val);
-            if (node.right != null) {
-                stack.addLast(node.right);
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                result.add(cur.val);
+                stack.addLast(cur);
+                cur = cur.left;
             }
-            if (node.left != null) {
-                stack.addLast(node.left);
-            }
+            cur = stack.pollLast().right;
         }
-        return output;
+        return result;
     }
 
     /**
