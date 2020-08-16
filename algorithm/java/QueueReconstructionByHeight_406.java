@@ -17,6 +17,7 @@ public class QueueReconstructionByHeight_406 {
      * https://www.bilibili.com/video/BV1xC4y1a72W
      */
     public int[][] reconstructQueue(int[][] people) {
+        // 这里特别注意，排序规则搞清楚
         Arrays.sort(people, (p1, p2) ->
                 p1[0] != p2[0] ? p2[0] - p1[0] : p1[1] - p2[1]
         );

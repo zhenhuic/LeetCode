@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -38,6 +39,46 @@ public class FindAllAnagramsInAString_438 {
             // 因为将 needs 中不存在的字符和多数的字符都从滑动窗口中移除掉了，
             // 所以如果滑动窗口的长度等于目标字符串长度，就代表符合条件
             if (r - l == pChars.length) res.add(l);
+        }
+        return res;
+    }
+
+    /**
+     * 用了一个计数，判断窗口中有几个字母个数已经符合需求了，
+     * 但是这样子是没必要的，有更好的判断方法。
+     */
+    public List<Integer> findAnagrams1(String s, String p) {
+        int[] needCnt = new int[26];
+        int distinct = 0;
+        for (int i = 0; i < p.length(); i++) {
+            needCnt[p.charAt(i) - 'a']++;
+            if (needCnt[p.charAt(i) - 'a'] == 1) {
+                distinct++;
+            }
+        }
+        List<Integer> res = new LinkedList<>();
+        int[] digCnt = new int[26];
+        int l = 0, r = 0;
+        int i;
+        int numDig = 0;
+        while (r < s.length()) {
+            i = s.charAt(r) - 'a';
+            if (digCnt[i] < needCnt[i]) {
+                digCnt[i]++;
+                if (digCnt[i] == needCnt[i]) {
+                    numDig++;
+                    if (numDig == distinct) {
+                        res.add(l);
+                    }
+                }
+                r++;
+            } else {
+                i = s.charAt(l++) - 'a';
+                if (digCnt[i] == needCnt[i]) {
+                    numDig--;
+                }
+                digCnt[i]--;
+            }
         }
         return res;
     }

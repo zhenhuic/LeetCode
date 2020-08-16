@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * 416. 分割等和子集
  */
@@ -59,5 +61,32 @@ public class PartitionEqualSubsetSum_416 {
             }
         }
         return dp[sum];
+    }
+
+    /**
+     * 这题DFS是超出时间限制的
+     */
+    public boolean canPartition2(int[] nums) {
+        int sum = 0;
+        for (int n : nums) {
+            sum += n;
+        }
+        if ((sum & 1) == 1) return false;
+        else sum = sum >> 1;
+
+        Arrays.sort(nums);
+        return dfs(nums, 0, sum);
+    }
+
+    private boolean dfs(int[] nums, int index, int sum) {
+        if (sum == 0) return true;
+        if (sum < 0) return false;
+
+        for (int i = index; i < nums.length; i++) {
+            if (dfs(nums, i + 1, sum - nums[i])) {
+                return true;
+            }
+        }
+        return false;
     }
 }
