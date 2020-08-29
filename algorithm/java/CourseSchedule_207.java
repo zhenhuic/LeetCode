@@ -6,7 +6,8 @@ import java.util.Queue;
 /**
  * 207. 课程表
  */
-public class CourseSchedule_207 {
+public class
+CourseSchedule_207 {
     /**
      * 拓扑排序
      * 广度优先遍历，入度表

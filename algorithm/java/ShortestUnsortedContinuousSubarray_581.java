@@ -20,7 +20,7 @@ public class ShortestUnsortedContinuousSubarray_581 {
             }
             stack.addLast(i);
         }
-
+        stack.clear();
         for (int i = len - 1; i >= 0; i--) {
             while (!stack.isEmpty() && nums[stack.peekLast()] < nums[i]) {
                 r = Math.max(r, stack.pollLast());

@@ -25,14 +25,14 @@ public class CombinationSum_39 {
     /**
      * @param candidates 数组输入
      * @param len        输入数组的长度，冗余变量
-     * @param residuum    剩余数值
+     * @param residue    剩余数值
      * @param begin      本轮搜索的起点下标
      * @param path       从根结点到任意结点的路径
      * @param res        结果集变量
      */
-    private void dfs(int[] candidates, int len, int residuum, int begin,
+    private void dfs(int[] candidates, int len, int residue, int begin,
                      Deque<Integer> path, List<List<Integer>> res) {
-        if (residuum == 0) {
+        if (residue == 0) {
             // 由于 path 全局只使用一份，到叶子结点的时候需要做一个拷贝
             res.add(new ArrayList<>(path));
             return;
@@ -40,10 +40,10 @@ public class CombinationSum_39 {
 
         for (int i = begin; i < len; i++) {
             // 在数组有序的前提下，剪枝
-            if (residuum - candidates[i] < 0) break;
+            if (residue - candidates[i] < 0) break;
 
             path.addLast(candidates[i]);
-            dfs(candidates, len, residuum - candidates[i], i, path, res);
+            dfs(candidates, len, residue - candidates[i], i, path, res);
             path.removeLast();
         }
     }
