@@ -4,6 +4,15 @@ import java.util.LinkedList;
 import java.util.Set;
 
 public class Bilibili {
+    public static void main(String[] args) {
+        int a = 10;
+        a += a -= a * a;
+        System.out.println(a);
+        a = 10;
+        a = a + (a = a - (a * a));
+        System.out.println(a);
+    }
+
     public boolean isValid(String s) {
         Deque<Character> stack = new LinkedList<>();
         for (char c : s.toCharArray()) {
