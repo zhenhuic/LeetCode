@@ -1,5 +1,9 @@
 import java.util.*;
 
+/**
+ * 47. 全排列 II
+ * 有重复数字
+ */
 public class PermutationsII_47 {
     public List<List<Integer>> permuteUnique(int[] nums) {
         int len = nums.length;

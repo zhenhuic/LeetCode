@@ -22,6 +22,10 @@ class SqrtX_69 {
         return ans;
     }
 
+    /**
+     * 袖珍计算器
+     * https://leetcode-cn.com/problems/sqrtx/solution/x-de-ping-fang-gen-by-leetcode-solution/
+     */
     public int mySqrtMath(int x) {
         if (x == 0) {
             return 0;
