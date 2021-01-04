@@ -2,11 +2,6 @@ package main
 
 // 147. 对链表进行插入排序
 
-// Definition for singly-linked list.
-type ListNode struct {
-	Val int
-	Next *ListNode
-}
 
 func insertionSortList(head *ListNode) *ListNode {
 	if head == nil {
